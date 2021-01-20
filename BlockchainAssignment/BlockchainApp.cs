@@ -17,6 +17,8 @@ namespace BlockchainAssignment
         {
             InitializeComponent();
             blockchain = new Blockchain();
+
+            //message printed when initalised  
             richTextBox1.Text = "New Blockchain intialised!";
         }
        

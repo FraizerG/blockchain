@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace BlockchainAssignment
 {
@@ -12,12 +9,37 @@ namespace BlockchainAssignment
         public int index;
         public String hash;
         public String previousHash;
-        
-        public Block (Block lastBlock)
+
+        /* Genisus Block creater */
+
+        public Block ()
         {
             timestamp = DateTime.Now;
-            index = lastBlock.index + 1;
-            previousHash = lastBlock.hash;
+            index = 0;
+            previousHash = String.Empty;
+            hash = createHash();
         }
+
+        
+        public Block (string previousHash, int index)
+        {
+            this.previousHash = previousHash;
+            this.index = index + 1;
+            hash = createHash();
+        }
+
+        public Block(Block lastBlock)
+        {
+            timestamp = DateTime.Now;
+            previousHash = lastBlock.hash;
+            index = lastBlock.index + 1;
+            hash = createHash();
+        }
+        public String createHash()
+        {
+            SHA256 hasher = SHA256Managed.Create();
+            return String.Empty; //TODO
+        }
+
     }
 }
